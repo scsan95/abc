@@ -1,11 +1,15 @@
 package test;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Scanner;
 
 //import javax.print.attribute.standard.Copies;
 import pojo.Copies;
 import pojo.Users;
+import utils.DBUtils;
 import dao.BookDao;
 import dao.CopiesDao;
 import dao.UsersDao;
@@ -167,6 +171,18 @@ public class Program
 			String name,email,phone,passwd;
 			float price;
 			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			while((choice = Program.userMenu() ) != 0)
 			{
 				switch(choice)
@@ -175,8 +191,43 @@ public class Program
 					break;
 					
 				case 1:
+					
+
+				
+					
+					
+					
+					try( Connection connection = DBUtils.getConnection();
+							Statement statement = connection.createStatement(); )
+						{
+						System.out.println("Enter Email:");
+						email  = sc.next();
+						sc.nextLine();
+						System.out.println("Enter password:");
+						passwd= sc.next();
+						
+							String sql = "SELECT * FROM users where email='"+email+"' and passwd='"+passwd+"'";
+							try( ResultSet rs =  statement.executeQuery(sql); )
+							{
+								if( rs.next() )
+								{
+									System.out.println(rs.getString(1)+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6));
+								}
+							}
+						}
+						catch (Exception e) 
+						{
+							e.printStackTrace();
+						}
+					
+					
 					while((choice = Program.ownerMenuList( ) ) !=0 )
 					{
+						
+						
+						
+						
+						
 //						int id1;
 //						String email1,passwd1;
 //						String contact;						
@@ -238,8 +289,34 @@ public class Program
 					
 					//------------------> Librarian
 				case 2:
+					
+
+					try( Connection connection = DBUtils.getConnection();
+							Statement statement = connection.createStatement(); )
+						{
+						System.out.println("Enter Email:");
+						email  = sc.next();
+						sc.nextLine();
+						System.out.println("Enter password:");
+						passwd= sc.next();
+						
+							String sql = "SELECT * FROM users where email='"+email+"' and passwd='"+passwd+"'";
+							try( ResultSet rs =  statement.executeQuery(sql); )
+							{
+								if( rs.next() )
+								{
+									System.out.println(rs.getString(1)+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6));
+								}
+							}
+						}
+						catch (Exception e) 
+						{
+							e.printStackTrace();
+						}
 					while( ( choice = Program.menuList( ) ) != 0 )
 					{
+						
+						
 						switch( choice )
 						{
 						case 0:
@@ -322,6 +399,29 @@ public class Program
 					break;
 					
 				case 3:
+					
+					try( Connection connection = DBUtils.getConnection();
+							Statement statement = connection.createStatement(); )
+						{
+						System.out.println("Enter Email:");
+						email  = sc.next();
+						sc.nextLine();
+						System.out.println("Enter password:");
+						passwd= sc.next();
+						
+							String sql = "SELECT * FROM users where email='"+email+"' and passwd='"+passwd+"'";
+							try( ResultSet rs =  statement.executeQuery(sql); )
+							{
+								if( rs.next() )
+								{
+									System.out.println(rs.getString(1)+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6));
+								}
+							}
+						}
+						catch (Exception e) 
+						{
+							e.printStackTrace();
+						}
 					while((choice = Program.UserMenuList())!= 0)
 					{
 						
